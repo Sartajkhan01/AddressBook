@@ -12,7 +12,7 @@ namespace AddressBook
             while (true)
             {
                 Console.WriteLine("Choose an option to execute the program : \n1. Add a contact\n2. Display contact\n3." +
-                    " Edit a contact\n4. End the program");
+                    " Edit a contact\n4. Delete a contact\n5. End the program");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -26,6 +26,9 @@ namespace AddressBook
                         createContact.EditContact();
                         break;
                     case 4:
+                        createContact.DeleteContact();
+                        break;
+                    case 5:
                         end = false;
                         break;
                     default:
