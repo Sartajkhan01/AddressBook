@@ -38,5 +38,50 @@ namespace AddressBook
                     + "\nState : " + contact.State + "\nZip Code : " + contact.Zipcode + "\nPhone Number : " + contact.PhoneNumber + "\nEmail Address : " + contact.Email);
             }
         }
+        public void EditContact()
+        {
+            Console.WriteLine("For editing a contact enter first name : ");
+            string name = Console.ReadLine();
+            if (contact.FirstName == name)
+            {
+                Console.WriteLine("Edit a contact\n1. Last Name\n2. Address\n3. City\n4. State\n5. ZipCode\n6. Phone Number\n7. Email Address");
+                int option = Convert.ToInt32(Console.ReadLine());
+                switch (option)
+                {
+                    case 1:
+                        string lastName = Console.ReadLine();
+                        contact.LastName = lastName;
+                        break;
+                    case 2:
+                        string address = Console.ReadLine();
+                        contact.Address = address;
+                        break;
+                    case 3:
+                        string city = Console.ReadLine();
+                        contact.City = city;
+                        break;
+                    case 4:
+                        string state = Console.ReadLine();
+                        contact.State = state;
+                        break;
+                    case 5:
+                        string zipcode = Console.ReadLine();
+                        contact.Zipcode = Convert.ToInt32(zipcode);
+                        break;
+                    case 6:
+                        string phone = Console.ReadLine();
+                        contact.PhoneNumber = Convert.ToInt64(phone);
+                        break;
+                    case 7:
+                        string email = Console.ReadLine();
+                        contact.Email = email;
+                        break;
+                }
+            }
+            else
+            {
+                Console.WriteLine("Contact doesn't exist");
+            }
+        }
     }
 }
