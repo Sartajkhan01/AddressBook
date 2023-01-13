@@ -29,6 +29,9 @@ namespace AddressBook
                         createContact.DeleteContact();
                         break;
                     case 5:
+                        createContact.ViewContact();
+                        break;
+                    case 6:
                         end = false;
                         break;
                     default:

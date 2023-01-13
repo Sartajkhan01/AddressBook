@@ -8,95 +8,172 @@ namespace AddressBook
 {
     public class AddressBookMain
     {
-        Contact contact = new Contact();
-        List<Contact> addressBook = new List<Contact>();
+        //Create dictionary to store result
+        Dictionary<string, string> Contacts;
+        Dictionary<string, Dictionary<string, string>> AddressBook = new Dictionary<string, Dictionary<string, string>>();
+
+       // UC1 - Create Contact
         public void CreateContact()
         {
-            Console.WriteLine("Enter First Name : ");
-            contact.FirstName = Console.ReadLine();
-            Console.WriteLine("Enter Last Name : ");
-            contact.LastName = Console.ReadLine();
-            Console.WriteLine("Enter Address : ");
-            contact.Address = Console.ReadLine();
-            Console.WriteLine("Enter City : ");
-            contact.City = Console.ReadLine();
-            Console.WriteLine("Enter State : ");
-            contact.State = Console.ReadLine();
-            Console.WriteLine("Enter Zip Code : ");
-            contact.Zipcode = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Enter Phone Number : ");
-            contact.PhoneNumber = Convert.ToInt64(Console.ReadLine());
-            Console.WriteLine("Enter Email Address : ");
-            contact.Email = Console.ReadLine();
-            addressBook.Add(contact);
+            Console.Write("First Name : ");
+            Contacts.Add("First Name ", Console.ReadLine());
+
+            Console.Write("Last Name : ");
+            Contacts.Add("Last Name ", Console.ReadLine());
+
+            Console.Write("Address : ");
+            Contacts.Add("Address ", Console.ReadLine());
+
+            Console.Write("City : ");
+            Contacts.Add("City ", Console.ReadLine());
+
+            Console.Write("State : ");
+            Contacts.Add("State ", Console.ReadLine());
+
+            Console.Write("Zip Code : ");
+            Contacts.Add("Zip Code ", Console.ReadLine());
+
+            Console.Write("Phone Number : ");
+            Contacts.Add("Phone Number  ", Console.ReadLine());
+
+            Console.Write("Email Address : ");
+            Contacts.Add("Email Address ", Console.ReadLine());
         }
-        public void Display()
+      //  Adding Contact To List
+        public void AddContact()
         {
-            foreach (var contact in addressBook)
-            {
-                Console.WriteLine("First Name : " + contact.FirstName + "\nLast Name : " + contact.LastName + "\nAddress : " + contact.Address + "\nCity : " + contact.City
-                    + "\nState : " + contact.State + "\nZip Code : " + contact.Zipcode + "\nPhone Number : " + contact.PhoneNumber + "\nEmail Address : " + contact.Email);
-            }
+            Console.WriteLine("Add contact");
+            Contacts = new Dictionary<string, string>();
+
+            Console.Write("First Name : ");
+            Contacts.Add("First Name ", Console.ReadLine());
+
+            Console.Write("Last Name : ");
+            Contacts.Add("Last Name ", Console.ReadLine());
+
+            Console.Write("Address : ");
+            Contacts.Add("Address ", Console.ReadLine());
+
+            Console.Write("City : ");
+            Contacts.Add("City ", Console.ReadLine());
+
+            Console.Write("State : ");
+            Contacts.Add("State ", Console.ReadLine());
+
+            Console.Write("Zip Code : ");
+            Contacts.Add("Zip Code ", Console.ReadLine());
+
+            Console.Write("Phone Number : ");
+            Contacts.Add("Phone Number  ", Console.ReadLine());
+
+            Console.Write("Email Address : ");
+            Contacts.Add("Email Address ", Console.ReadLine());
+
+            Contacts.TryGetValue("First Name", out string FirstName);
+            Contacts.TryGetValue("Last Name", out string LastName);
+            AddressBook.Add(FirstName + " " + LastName, Contacts);
+            Console.WriteLine("Contact added\n");
         }
+
+        public void ViewContact()
+        {
+            Console.WriteLine("Enter full name:");
+            string contactName = Console.ReadLine();
+            if (AddressBook.ContainsKey(contactName))
+            {
+                Contacts = new Dictionary<string, string>();
+                AddressBook.TryGetValue(contactName, out Contacts);
+                Console.WriteLine("First Name: " + Contacts["first Name"]);
+
+                Console.WriteLine("Last Name:" + Contacts["last Name"]);
+
+                Console.WriteLine("Address:" + Contacts["Address"]);
+
+                Console.WriteLine("City:" + Contacts["City"]);
+
+                Console.WriteLine("State:" + Contacts["State"]);
+
+                Console.WriteLine("Zip:" + Contacts["Zip"]);
+
+                Console.WriteLine("Phone number:" + Contacts["Phone number"]);
+
+                Console.WriteLine("Email:" + Contacts["Email"]);
+            }
+            else
+                Console.WriteLine("Contact doesn't exist");
+
+        }
+        //UC3 - Editing Contact
         public void EditContact()
         {
-            Console.WriteLine("For editing a contact enter first name : ");
-            string name = Console.ReadLine();
-            if (contact.FirstName == name)
+            //Edit information
+            Console.WriteLine("Enter full contact name");
+            String contactName = Console.ReadLine();
+
+            if (AddressBook.ContainsKey(contactName))
             {
-                Console.WriteLine("Edit a contact\n1. Last Name\n2. Address\n3. City\n4. State\n5. ZipCode\n6. Phone Number\n7. Email Address");
+                Console.Write("Select option you want to edit : ");
+                Console.WriteLine("1. First Name 2. Last Name 3. Address\n 4. City 5. State 6. Zip\n 7. Phone number  8. Email");
+
                 int option = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Enter contact field:");
+                String Cotanctinfo = Console.ReadLine();
+
                 switch (option)
                 {
                     case 1:
-                        string lastName = Console.ReadLine();
-                        contact.LastName = lastName;
+                        AddressBook[contactName]["First Name"] = Cotanctinfo;
                         break;
                     case 2:
-                        string address = Console.ReadLine();
-                        contact.Address = address;
+                        AddressBook[contactName]["Last Name"] = Cotanctinfo;
                         break;
                     case 3:
-                        string city = Console.ReadLine();
-                        contact.City = city;
+                        AddressBook[contactName]["Address"] = Cotanctinfo;
                         break;
                     case 4:
-                        string state = Console.ReadLine();
-                        contact.State = state;
+                        AddressBook[contactName]["City"] = Cotanctinfo;
                         break;
                     case 5:
-                        string zipcode = Console.ReadLine();
-                        contact.Zipcode = Convert.ToInt32(zipcode);
+                        AddressBook[contactName]["State"] = Cotanctinfo;
                         break;
                     case 6:
-                        string phone = Console.ReadLine();
-                        contact.PhoneNumber = Convert.ToInt64(phone);
+                        AddressBook[contactName]["Zip"] = Cotanctinfo;
                         break;
                     case 7:
-                        string email = Console.ReadLine();
-                        contact.Email = email;
+                        AddressBook[contactName]["Phone number"] = Cotanctinfo;
                         break;
+                    case 8:
+                        AddressBook[contactName]["Email"] = Cotanctinfo;
+                        break;
+
                 }
             }
             else
             {
-                Console.WriteLine("Contact doesn't exist");
+                Console.WriteLine("contact doesn't exist");
             }
         }
+        //UC4 - Delete Contact
         public void DeleteContact()
         {
-            Contact delete = new Contact();
-            Console.WriteLine("For deleting a contact enter first name :");
-            string name = Console.ReadLine();
-            foreach (var contact in addressBook)
+            //Delete contact
+            Console.WriteLine("Enter contact name:");
+            String ContactName = Console.ReadLine();
+            if (AddressBook.ContainsKey(ContactName))
             {
-                if (contact.FirstName == name)
-                {
-                    delete = contact;
-                }
+                AddressBook.Remove(ContactName);
+                Console.WriteLine("contact removed");
             }
-            addressBook.Remove(delete);
-            Display();
+            else
+                Console.WriteLine("contact doesn't exist");
+        }
+        //Display Contact
+        public void Display()
+        {
+            foreach (var contact in Contacts)
+            {
+                Console.WriteLine(contact);
+            }
         }
     }
 }
