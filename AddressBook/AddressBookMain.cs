@@ -15,32 +15,32 @@ namespace AddressBook
         String CurrentAddressBookName = "default";
 
         //UC1 - Create Contact
-        //public void CreateContact()
-        //{
-        //    Console.Write("First Name : ");
-        //    Contacts.Add("First Name ", Console.ReadLine());
+        public void CreateContact()
+        {
+            Console.Write("First Name : ");
+            Contacts.Add("First Name ", Console.ReadLine());
 
-        //    Console.Write("Last Name : ");
-        //    Contacts.Add("Last Name ", Console.ReadLine());
+            Console.Write("Last Name : ");
+            Contacts.Add("Last Name ", Console.ReadLine());
 
-        //    Console.Write("Address : ");
-        //    Contacts.Add("Address ", Console.ReadLine());
+            Console.Write("Address : ");
+            Contacts.Add("Address ", Console.ReadLine());
 
-        //    Console.Write("City : ");
-        //    Contacts.Add("City ", Console.ReadLine());
+            Console.Write("City : ");
+            Contacts.Add("City ", Console.ReadLine());
 
-        //    Console.Write("State : ");
-        //    Contacts.Add("State ", Console.ReadLine());
+            Console.Write("State : ");
+            Contacts.Add("State ", Console.ReadLine());
 
-        //    Console.Write("Zip Code : ");
-        //    Contacts.Add("Zip Code ", Console.ReadLine());
+            Console.Write("Zip Code : ");
+            Contacts.Add("Zip Code ", Console.ReadLine());
 
-        //    Console.Write("Phone Number : ");
-        //    Contacts.Add("Phone Number  ", Console.ReadLine());
+            Console.Write("Phone Number : ");
+            Contacts.Add("Phone Number  ", Console.ReadLine());
 
-        //    Console.Write("Email Address : ");
-        //    Contacts.Add("Email Address ", Console.ReadLine());
-        //}
+            Console.Write("Email Address : ");
+            Contacts.Add("Email Address ", Console.ReadLine());
+        }
         //Adding Contact To List
         public void AddContact()
         {
@@ -85,9 +85,9 @@ namespace AddressBook
             {
                 Contacts = new Dictionary<string, string>();
                 AddressBook.TryGetValue(contactName, out Contacts);
-                Console.WriteLine("First Name: " + Contacts["first Name"]);
+                Console.WriteLine("First Name: " + Contacts["First Name"]);
 
-                Console.WriteLine("Last Name:" + Contacts["last Name"]);
+                Console.WriteLine("Last Name:" + Contacts["Last Name"]);
 
                 Console.WriteLine("Address:" + Contacts["Address"]);
 
@@ -196,7 +196,6 @@ namespace AddressBook
             else
                 Console.WriteLine("Address Book doesn't exist");
         }
-
         //Display Contact
         public void Display()
         {
